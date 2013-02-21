@@ -1,0 +1,6 @@
+<% if @note.errors.any? %>
+  $('#new_note').replaceWith('<%= escape_javascript render('notes/form') %>');
+<% else %>
+  $('#new_note')[0].reset();
+  $('#notes').prepend('<%= escape_javascript render(@note) %>');
+<% end %>

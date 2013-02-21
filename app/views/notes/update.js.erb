@@ -1,0 +1,5 @@
+<% if @note.errors.any? %>
+  $('.note[data-id=<%= @note.id %>]').html('<%= escape_javascript render('notes/form') %>');
+<% else %>
+  $('.note[data-id=<%= @note.id %>]').html('<%= escape_javascript render(@note) %>');
+<% end %>

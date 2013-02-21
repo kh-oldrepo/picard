@@ -1,0 +1,31 @@
+%h1.header Listing Encounters
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Name
+    %th Date
+    %th Notes
+    %th Actions
+
+  - @encounters.each do |encounter|
+    %tr
+      %td= link_to encounter.name, encounter
+      %td= encounter.date
+      %td= link_to 'Show', encounter
+
+      %td
+
+        = link_to edit_encounter_path(encounter), {:class=>'btn btn-primary'} do
+          %span
+            Edit
+            %i{:class=>'icon-edit icon-white'}
+
+        = link_to 'Destroy', encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger'
+
+%br
+
+= link_to new_encounter_path, {:class=>'btn btn-success'} do
+  %span
+    New Encounter
+    %i{:class=>'icon-check icon-white'}
+

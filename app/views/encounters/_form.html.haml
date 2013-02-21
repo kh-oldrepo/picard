@@ -1,0 +1,12 @@
+= simple_form_for(@encounter) do |f|
+
+  .form-inputs
+    = f.input :name
+    = f.label :tags
+    = f.text_field :tag_list
+
+
+  .form-actions
+    = f.button :submit
+
+

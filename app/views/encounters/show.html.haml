@@ -7,15 +7,16 @@
   %b Date:
   = @encounter.date
 
-- @encounter.tags.any?
+
 - @encounter.tags.each do |tag|
   = link_to tag.name, tagged_url(:tag => tag.name)
+
 = render 'notes/form'
 
 
-- @encounter.notes.any?
-- @ecounter.notes.each do |note|
-  = render note
+#notes
+  - @encounter.notes.each do |note|
+    = render note
 
 = link_to 'Edit', edit_encounter_path(@encounter)
 \|

@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user!
-  respond_to :js, :only => [:edit, :update, :create, :new, :show]
+  respond_to :json, :only => [:create, :update, :create]
   # GET /notes
   # GET /notes.json
   def index
@@ -42,33 +42,16 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(params[:note])
-
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
+    @note = Note.create(params[:note])
+    @note.save
   end
+
 
   # PUT /notes/1
   # PUT /notes/1.json
   def update
     @note = Note.find(params[:id])
-
-    respond_to do |format|
-      if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
+    @note.update_attributes(params[:note])
   end
 
   # DELETE /notes/1

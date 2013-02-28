@@ -19,7 +19,7 @@ class EncountersController < ApplicationController
   def show
     @encounter = Encounter.find(params[:id])
     @note = Note.new(:encounter_id => @encounter.id)
-
+    @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @encounter }
@@ -38,7 +38,7 @@ class EncountersController < ApplicationController
   # GET /encounters/new.json
   def new
     @encounter = Encounter.new
-
+    @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @encounter }
@@ -47,6 +47,8 @@ class EncountersController < ApplicationController
 
   # GET /encounters/1/edit
   def edit
+
+    @tags = Encounter.tag_counts_on(:tags)
     @encounter = Encounter.find(params[:id])
   end
 

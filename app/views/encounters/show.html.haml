@@ -1,23 +1,50 @@
-%p
-  %b Name:
-  = @encounter.name
-%p
-  %b Date:
-  = @encounter.date
+#half
+  %h1.header Encounter Info
+  #half
+
+    %p
+      %b Name:
+      = @encounter.name
+    %p
+      %b Date:
+      = @encounter.created_at.strftime("%d %b. %Y %H:%M")
+    %p
 
 
-- @encounter.tags.each do |tag|
-  = link_to tag.name, tagged_url(:tag => tag.name)
-%p
-= link_to 'Edit', edit_encounter_path(@encounter)
-\|
-= link_to 'Back', encounters_path
 
-= render 'notes/form'
+    = link_to edit_encounter_path(@encounter),{:class=>'btn btn-primary'} do
+      %span
+        Edit
+        %i{:class=>'icon-edit icon-white'}
 
 
-#notes
-  - @encounter.notes.each do |note|
-    = render note
+  #half-right
+    %p
+      %b Assigned Tags:
+    %p
+      - @encounter.tags.each do |tag|
+        = link_to tag.name, tagged_url(:tag => tag.name)
+
+  .notes_section
+    = render 'notes/form'
+
+
+    #notes
+      - @encounter.notes.each do |note|
+        = render note
+
+
+.large
+  %h1.header All Tags
+  .well
+
+    #tag_cloud
+      - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
+        = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+
+
+
+
+
 
 

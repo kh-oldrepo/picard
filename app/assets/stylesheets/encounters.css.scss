@@ -2,9 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tag_cloud {
-  width: 400px;
+
   line-height: 1.6em;
   .s { font-size: 0.8em; }
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }
 }
+
+#half {
+  width: 50%;
+  float: left;
+}
+
+#half-right {
+  width: 40%;
+  float: right;
+  padding-left: 10px;
+}
+
+
+.notes_section{
+    margin-top: 15px;
+    border-top: 1px dashed #CCC;
+    position: relative;
+    clear: all;
+    float: left;
+  }
+
+.large {
+  width: 29%;
+  height: 350px;
+  float: right;
+  margin-left:10px;
+  padding-top:5px;
+}
+

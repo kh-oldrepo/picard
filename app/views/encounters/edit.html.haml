@@ -1,7 +1,14 @@
-%h1 Editing encounter
+%h1.header Editing Encounter
+#half
+  %h3.header Attributes
+  = render 'form'
+  = link_to 'Back', encounters_path
 
-= render 'form'
+.large
+  %h3.header All Tags
+  .well
 
-= link_to 'Show', @encounter
-\|
-= link_to 'Back', encounters_path
+    #tag_cloud
+      - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
+        = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+

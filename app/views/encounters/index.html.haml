@@ -4,14 +4,14 @@
   %tr
     %th Name
     %th Date
-    %th Notes
+
     %th Actions
 
   - @encounters.each do |encounter|
     %tr
       %td= link_to encounter.name, encounter
-      %td= encounter.created_at
-      %td= link_to 'Show', encounter
+      %td= encounter.created_at.strftime("%d %b. %Y %H:%M")
+
 
       %td
 

@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user!
-  respond_to :json, :only => [:create, :update, :create]
+  respond_to :json, :only => [:create, :update, :edit]
   # GET /notes
   # GET /notes.json
   def index

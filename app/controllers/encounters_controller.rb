@@ -15,7 +15,7 @@ class EncountersController < ApplicationController
   # GET /encounters/1.json
   def show
     @encounter = Encounter.find(params[:id])
-    @note = Note.new(:encounter_id => @encounter)
+    @note = Note.new(:encounter_id => @encounter.id)
 
     respond_to do |format|
       format.html # show.html.erb

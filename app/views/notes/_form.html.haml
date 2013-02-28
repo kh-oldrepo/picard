@@ -1,4 +1,4 @@
 = simple_form_for @note, :remote => true do |f|
   = f.input :encounter_id, :as => :hidden
-  = f.input :text
+  = f.input :text, :input_html => { :cols => 150, :rows => 3 }
   = f.button :submit

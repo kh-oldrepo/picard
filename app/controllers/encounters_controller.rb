@@ -4,13 +4,16 @@ class EncountersController < ApplicationController
   # GET /encounters.json
   def index
     @encounters = Encounter.all
-
+    @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @encounters }
     end
   end
 
+  def tag_cloud
+    @tags = Encounter.tag_counts_on(:tags)
+  end
   # GET /encounters/1
   # GET /encounters/1.json
   def show

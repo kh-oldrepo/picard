@@ -3,8 +3,8 @@ Picard::Application.routes.draw do
   resources :encounters
   match 'tagged' => 'encounters#tagged', :as => 'tagged'
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'encounters#index'
   end
-  root :to => "home#index"
+  root :to => "encounters#index"
   devise_for :users
 end

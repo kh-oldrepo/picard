@@ -29,3 +29,12 @@
   %span
     New Encounter
     %i{:class=>'icon-check icon-white'}
+
+%h1.header Listing Tags
+
+
+.well
+  #tag_cloud
+    - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
+      = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+

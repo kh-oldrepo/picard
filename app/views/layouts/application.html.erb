@@ -6,7 +6,6 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Picard" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" %>
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:300|Open+Sans'%>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>

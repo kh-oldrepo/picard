@@ -2,5 +2,9 @@
 
 
   .text= note.text
-  .edit= link_to 'edit', edit_note_path(note.id), :remote => true
-  = link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+  %tr
+    %td.edit= link_to 'Edit', edit_note_path(note.id), :remote => true
+    \|
+    %td= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }

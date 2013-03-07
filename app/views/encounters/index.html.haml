@@ -5,6 +5,15 @@
     New Encounter
     %i{:class=>'icon-check icon-white'}
 
+
+
+
+%a.btn.btn-info{:href => "#tags"}
+  Tags
+  %i.icon-star.icon-white
+
+
+
 #button-padding
 
 %table.table.table-striped.table-bordered.table-condensed
@@ -17,7 +26,7 @@
   - @encounters.each do |encounter|
     %tr
       %td= link_to encounter.name, encounter
-      %td= encounter.created_at.strftime("%d %b. %Y %H:%M")
+      %td= encounter.created_at.localtime.  strftime("%d %b. %Y %I:%M %p")
 
 
       %td
@@ -41,7 +50,7 @@
 
 %h1.header Tags
 
-
+%a#tags
 .well
   #tag_cloud
     - tag_cloud(@tags, %w(s m l)) do |tag, css_class|

@@ -1,17 +1,18 @@
 %h1.header Encounters
+#half
+  = link_to new_encounter_path, {:class=>'btn btn-success'} do
+    %span
+      New Encounter
+      %i{:class=>'icon-check icon-white'}
 
-= link_to new_encounter_path, {:class=>'btn btn-success'} do
-  %span
-    New Encounter
-    %i{:class=>'icon-check icon-white'}
 
 
+  &nbsp;
+  %a.btn.btn-info{:href => "#tags"}
+    Tags
+    %i.icon-tags.icon-white
+#search
 
-&nbsp;
-%a.btn.btn-info{:href => "#tags"}
-  Tags
-  %i.icon-tags.icon-white
-#half-right
   =form_tag encounters_path, :method => 'get' do
     =text_field_tag :search, params[:search]
     #search-padding

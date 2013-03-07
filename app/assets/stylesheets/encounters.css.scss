@@ -20,10 +20,18 @@
   padding-left: 10px;
 }
 
-#half-right-submit {
-  float:right;
+#search {
   width: 40%;
-  margin-top:40px;
+  float: left;
+  padding-left: 20px;
+  margin-left: 70px;
+}
+
+
+#half-right-submit {
+  float: right;
+  width: 40%;
+  padding-left:10px;
 }
 
 
@@ -54,8 +62,8 @@ width: 5px;
 
 #search-padding{
   padding-top: 3px;
-  float: right;
-  padding-right: 80px;
+  float: left;
+  padding-left: 5px;
   position: relative;
 }
 

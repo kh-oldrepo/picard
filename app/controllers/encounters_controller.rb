@@ -4,7 +4,7 @@ class EncountersController < ApplicationController
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = Encounter.order(sort_column + " " + sort_direction)
+    @encounters = Encounter.search(params[:search]).order(sort_column + " " + sort_direction)
     @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # index.html.erb

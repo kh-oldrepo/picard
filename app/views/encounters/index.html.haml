@@ -11,14 +11,17 @@
 %a.btn.btn-info{:href => "#tags"}
   Tags
   %i.icon-tags.icon-white
-
+#half-right
+  =form_tag encounters_path, :method => 'get' do
+    =text_field_tag :search, params[:search]
+    =submit_tag "Search", :name => nil
 
 
 #button-padding
 
 %table.table.table-striped.table-bordered.table-condensed
   %tr
-    %th= sortable "Name"
+    %th= sortable "name", "Name"
     %th= sortable "created_at", "Date"
 
     %th= sortable "Actions"
@@ -26,7 +29,7 @@
   - @encounters.each do |encounter|
     %tr
       %td= link_to encounter.name, encounter
-      %td= encounter.created_at.localtime.  strftime("%b %d %Y %I:%M %p")
+      %td= encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
 
 
       %td

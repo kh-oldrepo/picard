@@ -1,5 +1,12 @@
 %h1.header Encounters
 
+= link_to new_encounter_path, {:class=>'btn btn-success'} do
+  %span
+    New Encounter
+    %i{:class=>'icon-check icon-white'}
+
+#button-padding
+
 %table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Name
@@ -19,8 +26,10 @@
           %span
             Edit
             %i{:class=>'icon-edit icon-white'}
-
+        &nbsp; &nbsp; &nbsp;
         = link_to 'Destroy', encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger'
+
+
 
 %br
 

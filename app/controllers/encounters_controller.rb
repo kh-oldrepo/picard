@@ -1,9 +1,10 @@
 class EncountersController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = Encounter.all
+    @encounters = Encounter.order(sort_column + " " + sort_direction)
     @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # index.html.erb
@@ -95,4 +96,15 @@ class EncountersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+
+  def sort_column
+    Encounter.column_names.include?(params[:sort]) ? params[:sort] : "Date"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

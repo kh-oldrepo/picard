@@ -5,7 +5,9 @@
     = f.input :tag_list, :as => :text,:input_html => { :rows => 3, :class => "text-box"}
 
 
-  .form-actions
-    = f.button :submit
+
+    = f.button :submit,  :class => 'btn btn-success' do
+      %span
+        %i{:class=>'icon-plus icon-white'}
 
 

@@ -3,15 +3,14 @@
   #half
 
     %p
-      %b Name:
+      %b.label.label-info  Name:
       = @encounter.name
     %p
-      %b Date:
+      &nbsp;
+      %b.label.label-info  Date:
       = @encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
     %p
-
-
-
+    #button-padding
     = link_to edit_encounter_path(@encounter),{:class=>'btn btn-primary'} do
       %span
         Edit
@@ -20,7 +19,7 @@
 
   #half-right
     %p
-      %b Assigned Tags:
+      %b.label.label-info Assigned Tags:
     %p
       - @encounter.tags.each do |tag|
         = link_to tag.name, tagged_url(:tag => tag.name)
@@ -39,7 +38,7 @@
 
 .large
   %h1.header All Tags
-  .well
+  .well.clearfix
 
     #tag_cloud
       - tag_cloud(@tags, %w(s m l)) do |tag, css_class|

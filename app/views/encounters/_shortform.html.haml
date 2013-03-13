@@ -1,5 +1,5 @@
 = simple_form_for(@encounter) do |f|
 
-    = f.label :Current_Tags
-    = f.text_field :tag_list
-    = f.button :submit
+  = f.label :Current_Tags
+  = f.input :tag_list, :as => :text,:input_html => { :rows => 3, :class => "text-box"}
+  = f.button :submit

@@ -10,6 +10,6 @@
 
     #tag_cloud
       - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
-        = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+        = link_to tag.name, '#', :class => css_class + " cloud_tag"
 
 

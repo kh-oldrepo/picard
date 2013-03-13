@@ -2,8 +2,7 @@
 
   .form-inputs
     = f.input :name
-    = f.label :tags
-    = f.text_field :tag_list
+    = f.input :tag_list, :as => :text,:input_html => { :rows => 3, :class => "text-box"}
 
 
   .form-actions

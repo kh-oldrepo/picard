@@ -1,7 +1,7 @@
 class Encounter < ActiveRecord::Base
   def self.search(search)
     if search
-      where('name ILIKE ?', "%#{search}%")
+      where('name LIKE ?', "%#{search}%")
     else
       scoped
     end

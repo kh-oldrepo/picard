@@ -25,7 +25,8 @@ a {
     color: #666;
   }
   &:hover {
-    color: #3399FF;
+    @include transition(color 0.5s);
+    color: #33CCCC;
 
   }
 }

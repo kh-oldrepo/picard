@@ -3,7 +3,7 @@
   = link_to new_encounter_path, {:class=>'btn btn-success'} do
     %span
       New Encounter
-      %i{:class=>'icon-check icon-white'}
+      %i{:class=>'icon-plus icon-white'}
 
 
 
@@ -16,7 +16,7 @@
   =form_tag encounters_path, :method => 'get' do
     =text_field_tag :search, params[:search]
     #search-padding
-      =submit_tag "Search", :name => nil
+      =submit_tag "Search", :name => nil, :class => 'btn btn-info'
 
 
 #button-padding
@@ -25,8 +25,7 @@
   %tr
     %th= sortable "name", "Name"
     %th= sortable "created_at", "Date"
-
-    %th= sortable "Actions"
+    %th.actionwidth= sortable "Actions"
 
   - @encounters.each do |encounter|
     %tr
@@ -35,7 +34,7 @@
 
 
       %td
-
+        &nbsp;
         = link_to edit_encounter_path(encounter), {:class=>'btn btn-primary'} do
           %span
             Edit
@@ -51,7 +50,7 @@
 = link_to new_encounter_path, {:class=>'btn btn-success'} do
   %span
     New Encounter
-    %i{:class=>'icon-check icon-white'}
+    %i{:class=>'icon-plus icon-white'}
 
 %h1.header Tags
 

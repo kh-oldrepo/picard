@@ -1,15 +1,20 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.8'
-group :development do
-gem 'sqlite3'
-end
-gem 'pg'
-gem 'thin'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
 end
+
+group :development do
+  gem 'sqlite3'
+end
+
+gem 'pg'
+gem 'thin'
+gem 'compass_twitter_bootstrap'
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test

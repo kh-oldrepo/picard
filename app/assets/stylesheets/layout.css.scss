@@ -24,4 +24,41 @@
   padding-top: 5px;
 }
 
+.navbar-inner {
+  background: rgba(255, 255, 255, 0.9);
+  height: 50px
+}
 
+.brand {
+    margin-top: 8px;
+    font-weight: bold;
+    font-family:Ubuntu;
+    font-size: 25px
+  }
+
+.navbar .nav > li > a {
+  padding: 18px 0px 0px 40px;
+  text-shadow: none;
+  @include transition(color 0.5s);
+  &:hover {color: #33CCCC;}
+
+  font-size: 19px;
+  font-family:Ubuntu;
+
+}
+
+a {
+  color: #000;
+  &:hover {
+    @include transition(color 0.5s);
+    color: #447BD4;
+    text-decoration: none;
+
+  }
+}
+
+.transition{
+
+}
+
+body { padding-top: 60px; }

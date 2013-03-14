@@ -9,6 +9,7 @@ class EncountersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @encounters }
+      format.csv { send_data @encounters.to_csv }
     end
   end
 
@@ -30,6 +31,7 @@ class EncountersController < ApplicationController
   def tagged
     if params[:tag].present?
       @encounters = Encounter.tagged_with(params[:tag])
+      @tags = Encounter.tag_counts_on(:tags)
     else
       @encounters = Encounter.postall
     end

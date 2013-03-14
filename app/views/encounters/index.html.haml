@@ -8,12 +8,17 @@
       New Encounter
       %i{:class=>'icon-plus icon-white'}
 
-
-
   &nbsp;
   %a.btn.btn-info{:href => "#tags"}
     Tags
     %i.icon-tags.icon-white
+
+  &nbsp;
+  = link_to encounters_path(format: "csv"), {:class=>'btn btn-info'} do
+    %span
+      CSV
+      %i{:class=>'icon-list-alt icon-white'}
+
 #search
 
   =form_tag encounters_path, :method => 'get' do
@@ -43,7 +48,10 @@
             Edit
             %i{:class=>'icon-edit icon-white'}
         &nbsp;
-        = link_to 'Destroy', encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger'
+        = link_to encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger' do
+          %span
+            Delete
+            %i{:class=>'icon-fire icon-white'}
 
 
 

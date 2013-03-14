@@ -26,7 +26,7 @@
 }
 
 .navbar-inner {
-  background: rgba(242, 242, 242, 0.9);
+  background: rgba(244, 244, 244, 0.9);
   height: 50px
 }
 
@@ -52,7 +52,7 @@ a {
   color: #333333;
   &:hover {
     @include transition(color 0.5s);
-    color: #447BD4;
+    color: #3A87AD;
     text-decoration: none;
 
   }

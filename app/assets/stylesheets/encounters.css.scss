@@ -29,8 +29,8 @@
 
 
 #half-right-submit {
-  float: right;
-
+  float: left;
+  clear: both;
   padding-top:50px;
   padding-left: 10px;
   position: relative;
@@ -42,12 +42,13 @@
     border-top: 1px dashed #CCC;
     padding-top: 10px;
     position: relative;
+    width: 560px;
     clear: all;
     float: left;
   }
 
 .large {
-  width: 32%;
+  width: 33%;
   float: right;
   margin-left:10px;
   padding-top:5px;

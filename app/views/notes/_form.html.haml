@@ -3,6 +3,7 @@
 
   = f.input :encounter_id, :as => :hidden
 
-  #half= f.input :text, :input_html => { :cols => 150, :rows => 3 }
-  #half-right-submit
-    = f.button :submit, "Submit",  :class => 'btn btn-success'
+  #half
+    = f.input :text, :input_html => { :cols => 150, :rows => 3 }
+    %p
+      = f.button :submit, "Submit",  :class => 'btn btn-success'

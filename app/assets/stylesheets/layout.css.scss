@@ -26,7 +26,7 @@
 }
 
 .navbar-inner {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(242, 242, 242, 0.9);
   height: 50px
 }
 
@@ -41,7 +41,7 @@
   padding: 18px 0px 0px 40px;
   text-shadow: none;
   @include transition(color 0.5s);
-  &:hover {color: #33CCCC;}
+  &:hover {color: #3A87AD;}
 
   font-size: 19px;
   font-family:Ubuntu;

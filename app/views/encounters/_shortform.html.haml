@@ -1,5 +1,5 @@
 = simple_form_for(@encounter) do |f|
 
-  = f.label :Current_Tags
+
   = f.input :tag_list, :as => :text,:input_html => { :rows => 4, :class => "text-box tags-box"}
   = f.button :submit, "Update", :class => 'btn btn-success float-right'

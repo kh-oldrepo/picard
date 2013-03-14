@@ -22,7 +22,7 @@
       %b.label.label-info Assigned Tags:
     %p
       - @encounter.tags.each do |tag|
-        = link_to tag.name, tagged_url(:tag => tag.name)
+        = link_to tag.name, tagged_url(:tag => tag.name), {:class => 'badge badge-default'}
 
 
 

@@ -1,5 +1,7 @@
 %h1.header Encounters
+
 #half
+
   = link_to new_encounter_path, {:class=>'btn btn-success'} do
     %span
       New Encounter
@@ -18,7 +20,7 @@
     #search-padding
       =submit_tag "Search", :name => nil, :class => 'btn btn-info'
 
-
+%a#top
 #button-padding
 
 %table.table.table-striped.table-bordered.table-condensed
@@ -51,6 +53,12 @@
   %span
     New Encounter
     %i{:class=>'icon-plus icon-white'}
+
+&nbsp;
+
+%a.btn.btn-info{:href => "#top"}
+  Top
+  %i.icon-arrow-up.icon-white
 
 %h1.header Tags
 

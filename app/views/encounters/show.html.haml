@@ -1,8 +1,9 @@
 #half
   %h1.header Info
   #half
-
+    = image_tag @encounter.photo.url(:small)
     %p
+
       %b.label.label-info  Name:
       = @encounter.name
     %p

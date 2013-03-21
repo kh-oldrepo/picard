@@ -12,6 +12,7 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'paperclip'
 gem 'pg'
 gem 'thin'
 gem 'compass_twitter_bootstrap'

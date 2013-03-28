@@ -64,8 +64,9 @@
   %a#tags
   .well
     #tag_cloud
-      - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
-        = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+      - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+        = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
+
 #div1
   = link_to new_encounter_path, {:class=>'btn btn-success'} do
     %span

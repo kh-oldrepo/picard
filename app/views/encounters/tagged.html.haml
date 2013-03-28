@@ -8,12 +8,17 @@
       New Encounter
       %i{:class=>'icon-plus icon-white'}
 
-
-
   &nbsp;
   %a.btn.btn-info{:href => "#tags"}
-    Tags
-    %i.icon-tags.icon-white
+    Bottom
+    %i.icon-arrow-down.icon-white
+
+  &nbsp;
+  = link_to encounters_path(format: "csv"), {:class=>'btn btn-info'} do
+    %span
+      CSV
+      %i{:class=>'icon-list-alt icon-white'}
+
 #search
 
   =form_tag encounters_path, :method => 'get' do
@@ -21,51 +26,56 @@
     #search-padding
       =submit_tag "Search", :name => nil, :class => 'btn btn-info'
 
+
 %a#top
 #button-padding
-
-%table.table.table-striped.table-bordered.table-condensed
-  %tr
-    %th= sortable "name", "Name"
-    %th= sortable "created_at", "Date"
-    %th.actionwidth= sortable "Actions"
-
-  - @encounters.each do |encounter|
+#table
+  %table.table.table-striped.table-bordered.table-condensed
     %tr
-      %td= link_to encounter.name, encounter
-      %td= encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
+      %th= sortable "name", "Name"
+      %th= sortable "created_at", "Date"
+      %th.actionwidth= sortable "Actions"
+
+    - @encounters.each do |encounter|
+      %tr
+        %td= link_to encounter.name, encounter
+        %td= encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
 
 
-      %td
-        &nbsp;
-        = link_to edit_encounter_path(encounter), {:class=>'btn btn-primary'} do
-          %span
-            Edit
-            %i{:class=>'icon-edit icon-white'}
-        &nbsp;
-        = link_to 'Destroy', encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger'
+        %td
+          &nbsp;
+          = link_to edit_encounter_path(encounter), {:class=>'btn btn-primary'} do
+            %span
+              Edit
+              %i{:class=>'icon-edit icon-white'}
+          &nbsp;
+          /= link_to encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger' do
+          /  %span
+          /    Delete
+          /    %i{:class=>'icon-fire icon-white'}
 
 
 
-%br
 
 
-= link_to new_encounter_path, {:class=>'btn btn-success'} do
-  %span
-    New Encounter
-    %i{:class=>'icon-plus icon-white'}
 
-&nbsp;
 
-%a.btn.btn-info{:href => "#top"}
-  Top
-  %i.icon-arrow-up.icon-white
+#half-right
+  %a#tags
+  .well
+    #tag_cloud
+      - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+        = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
 
-%h1.header Tags
+#div1
+  = link_to new_encounter_path, {:class=>'btn btn-success'} do
+    %span
+      New Encounter
+      %i{:class=>'icon-plus icon-white'}
 
-%a#tags
-.well
-  #tag_cloud
-    - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
-      = link_to tag.name, tagged_url(:tag => tag.name), :class => css_class
+  &nbsp;
 
+
+  %a.btn.btn-info{:href => "#top"}
+    Top
+    %i.icon-arrow-up.icon-white

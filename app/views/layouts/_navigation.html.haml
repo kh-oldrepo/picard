@@ -1,0 +1,24 @@
+%ul.nav.pull-right
+  %li.logo= link_to "Picard", root_path
+
+- if user_signed_in?
+  %ul.nav
+    %li
+      = link_to('Encounters', encounters_path)
+  %ul.nav.pull-right
+    %li= link_to('Logout', destroy_user_session_path, :method=>'delete')
+- else
+  %ul.nav
+    %li
+      = link_to('Login', new_user_session_path)
+- if user_signed_in?
+  %ul.nav.pull-right
+    %li
+      = link_to('Settings', edit_user_registration_path)
+    - if current_user.has_role? :admin
+      %li
+        = link_to('Admin', users_path)
+- else
+  %ul.nav.pull-right
+    %li
+      = link_to('Sign up', new_user_registration_path)

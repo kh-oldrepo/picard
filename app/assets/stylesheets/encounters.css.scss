@@ -14,6 +14,11 @@
   float: left;
 }
 
+#table {
+  width: 57%;
+  float: left;
+}
+
 #half-right {
   width: 40%;
   float: right;
@@ -27,6 +32,16 @@
   margin-left: 85px;
 }
 
+#div1{
+  width: 40%;
+  float: left;
+  clear: both;
+}
+
+#tagsright{
+  width: 30%;
+  float: right;
+}
 
 #half-right-submit {
   float: left;
@@ -70,7 +85,7 @@ width: 5px;
 }
 
 .actionwidth{
-  width: 180px;
+  width: 90px;
 }
 
 .float-right{

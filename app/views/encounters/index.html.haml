@@ -56,7 +56,7 @@
 
 
 #half-right
-  %a#tags
+
   .well
     #tag_cloud
       - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
@@ -80,3 +80,5 @@
   %a.btn.btn-info{:href => "#top"}
     Top
     %i.icon-arrow-up.icon-white
+
+%a#tags

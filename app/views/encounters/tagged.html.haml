@@ -19,12 +19,7 @@
       CSV
       %i{:class=>'icon-list-alt icon-white'}
 
-#search
 
-  =form_tag encounters_path, :method => 'get' do
-    =text_field_tag :search, params[:search]
-    #search-padding
-      =submit_tag "Search", :name => nil, :class => 'btn btn-info'
 
 
 %a#top
@@ -61,11 +56,17 @@
 
 
 #half-right
-
+  %a#tags
   .well
     #tag_cloud
       - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
         = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
+  #search
+
+  =form_tag encounters_path, :method => 'get' do
+    =text_field_tag :search, params[:search]
+    #search-padding
+      =submit_tag "Search", :name => nil, :class => 'btn btn-info'
 
 #div1
   = link_to new_encounter_path, {:class=>'btn btn-success'} do
@@ -79,5 +80,3 @@
   %a.btn.btn-info{:href => "#top"}
     Top
     %i.icon-arrow-up.icon-white
-
-%a#tags

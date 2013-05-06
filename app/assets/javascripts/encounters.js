@@ -12,14 +12,3 @@ $(function() {
 });
 
 
-$('.nav-tabs li').each(function(index, li) {
-    var element = $(li);
-     if (element.attr("class") == "active"){
-          elementAlreadyActive = true;
-     }
-
-});
-if (!elementAlreadyActive){
-    $('.nav-tabs li:first').addClass('active');
-    $('.tab-content div:first').addClass('active');
-} });

@@ -58,13 +58,13 @@
     border-top: 1px dashed #CCC;
     padding-top: 10px;
     position: relative;
-    width: 560px;
+    width: 520px;
     clear: all;
     float: left;
   }
 
 .large {
-  width: 33%;
+  width: 43%;
   float: right;
   margin-left:10px;
   padding-top:5px;
@@ -99,3 +99,12 @@ width: 5px;
   width: 100%;
 }
 
+.modal-header {
+  background-image: url('/assets/p4.png');
+  border-bottom: 1px solid #C2C2C2;
+  font-family: Ubuntu;
+}
+
+.modal-body {
+  background-image: url('/assets/p6.png');
+}

@@ -10,6 +10,7 @@ class EncountersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @encounters }
       format.csv { send_data @encounters.to_csv }
+    @encounter = Encounter.new
     end
   end
 

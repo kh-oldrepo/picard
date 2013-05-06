@@ -9,12 +9,10 @@
 
 .tab-content
   #one.tab-pane.active
-
-
-    = link_to new_encounter_path, {:class=>'btn btn-success'} do
+    %a.btn.btn-success{"data-toggle" => "modal", :href => "#myModal", :role => "button"}
       %span
-        New Encounter
-        %i{:class=>'icon-plus icon-white'}
+      New Encounter
+      %i{:class=>'icon-plus icon-white'}
 
     &nbsp;
     %a.btn.btn-info{:href => "#bottom"}
@@ -62,10 +60,10 @@
         #search-padding
           =submit_tag "Search", :name => nil, :class => 'btn btn-info'
     #div1
-      = link_to new_encounter_path, {:class=>'btn btn-success'} do
+      %a.btn.btn-success{"data-toggle" => "modal", :href => "#myModal", :role => "button"}
         %span
-          New Encounter
-          %i{:class=>'icon-plus icon-white'}
+        New Encounter
+        %i{:class=>'icon-plus icon-white'}
 
       &nbsp;
 
@@ -81,6 +79,27 @@
           = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
 
 
+
+/Modal
+
+
+#myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} x
+    %h3#myModalLabel New Encounter
+
+  .modal-body
+    #half
+
+      = render 'form'
+
+
+    .large
+      .well
+
+        #tag_cloud
+          - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
+            = link_to tag.name, '#', :class => css_class + " cloud_tag"
 
 
 

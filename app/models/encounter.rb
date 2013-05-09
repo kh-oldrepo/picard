@@ -1,4 +1,12 @@
 class Encounter < ActiveRecord::Base
+  validates :user_id, :presence => true
+  attr_accessible :date, :name, :tag_list, :encounter_id, :photo
+  belongs_to :user
+  has_many :notes
+  acts_as_taggable_on :tags
+  has_attached_file :photo, :styles => { :small => "100x100>" }
+
+
   def self.search(search)
     if search
       where('name ILIKE ?', "%#{search}%")
@@ -16,11 +24,7 @@ class Encounter < ActiveRecord::Base
     end
   end
 
-  attr_accessible :date, :name, :tag_list, :encounter_id, :photo
-  belongs_to :user
-  has_many :notes
-  acts_as_taggable_on :tags
-  has_attached_file :photo, :styles => { :small => "100x100>" }
+
 
 end
 

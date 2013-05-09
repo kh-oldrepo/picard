@@ -4,13 +4,14 @@ class EncountersController < ApplicationController
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = Encounter.search(params[:search]).order(sort_column + " " + sort_direction)
+    @encounters = current_user.encounters.search(params[:search]).order(sort_column + " " + sort_direction)
     @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @encounters }
       format.csv { send_data @encounters.to_csv }
     @encounter = Encounter.new
+
     end
   end
 
@@ -20,12 +21,13 @@ class EncountersController < ApplicationController
   # GET /encounters/1
   # GET /encounters/1.json
   def show
-    @encounter = Encounter.find(params[:id])
+    @encounter = current_user.encounters.find(params[:id])
     @note = Note.new(:encounter_id => @encounter.id)
     @tags = Encounter.tag_counts_on(:tags)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @encounter }
+
     end
   end
 
@@ -59,7 +61,8 @@ class EncountersController < ApplicationController
   # POST /encounters
   # POST /encounters.json
   def create
-    @encounter = Encounter.new(params[:encounter])
+
+    @encounter = current_user.encounters.new(params[:encounter])
 
     respond_to do |format|
       if @encounter.save

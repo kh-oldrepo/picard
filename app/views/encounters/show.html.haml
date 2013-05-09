@@ -38,12 +38,23 @@
 
 
 .large
-  %h1.header Tags
-  .well.clearfix
+  .tabbable
+    %ul.nav.nav-pills.pull-right
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#one"} My Tags
+      %li
+        %a{"data-toggle" => "tab", :href => "#two"} All Tags
 
-    #tag_cloud
-      - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
-        = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
+  .well.clearfix
+    .tab-content
+      #one.tab-pane.active
+        #tag_cloud
+          - tag_cloud current_user.encounters.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+            = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
+      #two.tab-pane
+        #tag_cloud
+          - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+            = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
 
     .clear=render 'encounters/shortform'
 

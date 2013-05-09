@@ -5,7 +5,9 @@
     %li.active
       %a{"data-toggle" => "tab", :href => "#one"} Encounters
     %li
-      %a{"data-toggle" => "tab", :href => "#two"} Tags
+      %a{"data-toggle" => "tab", :href => "#two"} My Tags
+    %li
+      %a{"data-toggle" => "tab", :href => "#three"} All Tags
 
 .tab-content
   #one.tab-pane.active
@@ -75,6 +77,12 @@
   #two.tab-pane
     .well
       #tag_cloud
+        - tag_cloud current_user.encounters.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+          = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
+
+  #three.tab-pane
+    .well
+      #tag_cloud
         - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
           = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class
 
@@ -95,12 +103,25 @@
 
 
     .large
-      .well
 
-        #tag_cloud
-          - tag_cloud(@tags, %w(s m l)) do |tag, css_class|
-            = link_to tag.name, '#', :class => css_class + " cloud_tag"
 
+      .well.clearfix
+        .tab-content
+          #four.tab-pane.active
+            #tag_cloud
+              - tag_cloud current_user.encounters.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+                = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
+          #five.tab-pane
+            #tag_cloud
+              - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
+                = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
+
+      .tabbable
+        %ul.nav.nav-pills.pull-right
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#four"} My Tags
+          %li
+            %a{"data-toggle" => "tab", :href => "#five"} All Tags
 
 
 

@@ -5,7 +5,7 @@ class EncountersController < ApplicationController
   # GET /encounters.json
   def index
     @encounters = current_user.encounters.search(params[:search]).order(sort_column + " " + sort_direction)
-    @tags = Encounter.tag_counts_on(:tags)
+    @tags = current_user.encounters.tag_counts_on(:tags)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @encounters }
@@ -16,14 +16,14 @@ class EncountersController < ApplicationController
   end
 
   def tag_cloud
-    @tags = Encounter.tag_counts_on(:tags)
+    @tags = current_user.encounters.tag_counts_on(:tags)
   end
   # GET /encounters/1
   # GET /encounters/1.json
   def show
     @encounter = current_user.encounters.find(params[:id])
     @note = Note.new(:encounter_id => @encounter.id)
-    @tags = Encounter.tag_counts_on(:tags)
+    @tags = current_user.encounters.tag_counts_on(:tags)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @encounter }
@@ -33,8 +33,8 @@ class EncountersController < ApplicationController
 
   def tagged
     if params[:tag].present?
-      @encounters = Encounter.tagged_with(params[:tag])
-      @tags = Encounter.tag_counts_on(:tags)
+      @encounters = current_user.encounters.tagged_with(params[:tag])
+      @tags = current_user.encounters.tag_counts_on(:tags)
     else
       @encounters = Encounter.postall
     end
@@ -44,7 +44,7 @@ class EncountersController < ApplicationController
   # GET /encounters/new.json
   def new
     @encounter = Encounter.new
-    @tags = Encounter.tag_counts_on(:tags)
+    @tags = current_user.encounters.tag_counts_on(:tags)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @encounter }
@@ -54,8 +54,8 @@ class EncountersController < ApplicationController
   # GET /encounters/1/edit
   def edit
 
-    @tags = Encounter.tag_counts_on(:tags)
-    @encounter = Encounter.find(params[:id])
+    @tags = current_user.encounters.tag_counts_on(:tags)
+    @encounter = current_user.encounters.find(params[:id])
   end
 
   # POST /encounters
@@ -78,7 +78,7 @@ class EncountersController < ApplicationController
   # PUT /encounters/1
   # PUT /encounters/1.json
   def update
-    @encounter = Encounter.find(params[:id])
+    @encounter = current_user.encounters.find(params[:id])
 
     respond_to do |format|
       if @encounter.update_attributes(params[:encounter])

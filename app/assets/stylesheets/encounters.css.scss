@@ -106,5 +106,9 @@ width: 5px;
 }
 
 .modal-body {
+  >.large {
+    width:48%;
+  }
   background-image: url('/assets/p6.png');
 }
+

@@ -107,7 +107,11 @@ width: 5px;
 
 .modal-body {
   >.large {
-    width:48%;
+    width:55%;
+    margin-top: -2px;
+  }
+  >#half {
+    width:40%
   }
   background-image: url('/assets/p6.png');
 }

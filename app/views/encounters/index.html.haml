@@ -104,6 +104,12 @@
 
     .large
 
+      .tabbable.modal-tab
+        %ul.nav.nav-pills.pull-right
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#four"} My Tags
+          %li
+            %a{"data-toggle" => "tab", :href => "#five"} All Tags
 
       .well.clearfix
         .tab-content
@@ -116,12 +122,6 @@
               - tag_cloud Encounter.tag_counts.sort { |x, y| x.name <=> y.name }, %w(s m l) do |tag, css_class|
                 = link_to tag.name, tagged_url( :tag => tag.name ), :class => css_class + " cloud_tag"
 
-      .tabbable
-        %ul.nav.nav-pills.pull-right
-          %li.active
-            %a{"data-toggle" => "tab", :href => "#four"} My Tags
-          %li
-            %a{"data-toggle" => "tab", :href => "#five"} All Tags
 
 
 

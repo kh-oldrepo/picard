@@ -4,6 +4,6 @@
   = f.input :encounter_id, :as => :hidden
 
   #half
-    = f.input :text, :input_html => { :cols => 150, :rows => 3 }
+    = f.input :text, label: false, placeholder: 'New note', :input_html => { :cols => 150, :rows => 3 }
     %p
       = f.button :submit, "Submit",  :class => 'btn btn-success'

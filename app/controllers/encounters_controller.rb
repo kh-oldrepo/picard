@@ -10,6 +10,7 @@ class EncountersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @encounters }
       format.csv { send_data @encounters.to_csv }
+      format.js { render @encounter, :layout => false }
     @encounter = Encounter.new
 
     end
@@ -27,7 +28,7 @@ class EncountersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @encounter }
-
+      format.js { render @encounter, :layout => false }
     end
   end
 
@@ -110,7 +111,7 @@ private
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[desc asc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 end

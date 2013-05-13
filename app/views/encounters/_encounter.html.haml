@@ -1,0 +1,8 @@
+
+
+= render 'notes/form'
+
+
+#notes
+  - @encounter.notes.each do |note|
+    = render note

@@ -11,7 +11,7 @@
 
 .tab-content
   #one.tab-pane.active
-    %a.btn.btn-success{"data-toggle" => "modal", :href => "#myModal", :role => "button"}
+    %a.btn.btn-success{"data-toggle" => "modal", :href => "#newEncounter", :role => "button"}
       %span
       New Encounter
       %i{:class=>'icon-plus icon-white'}
@@ -34,21 +34,23 @@
         %tr
           %th= sortable "name", "Name"
           %th= sortable "created_at", "Date"
-          %th.actionwidth= sortable "Actions"
+          %th= sortable "Actions"
 
         - @encounters.each do |encounter|
           %tr
             %td= link_to encounter.name, encounter
-            %td= encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
-
-
+            %td
+              = encounter.created_at.in_time_zone("Eastern Time (US & Canada)").  strftime("%b %d %Y %I:%M %p")
             %td
               &nbsp;
               = link_to edit_encounter_path(encounter), {:class=>'btn btn-primary'} do
                 %span
                   Edit
                   %i{:class=>'icon-edit icon-white'}
-              &nbsp;
+              %a.btn.btn-primary{"data-target" => "#notesModal", "data-toggle" => "modal", :href => encounter_path(encounter, :format => :js)}
+                %span
+                Edit Notes
+                %i{:class=>'icon-list-alt icon-white'}
 
               /= link_to encounter, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class=>'btn btn-danger' do
               /  %span
@@ -61,8 +63,9 @@
         =text_field_tag :search, params[:search]
         #search-padding
           =submit_tag "Search", :name => nil, :class => 'btn btn-info'
+
     #div1
-      %a.btn.btn-success{"data-toggle" => "modal", :href => "#myModal", :role => "button"}
+      %a.btn.btn-success{"data-toggle" => "modal", :href => "#newEncounter", :role => "button"}
         %span
         New Encounter
         %i{:class=>'icon-plus icon-white'}
@@ -91,7 +94,7 @@
 /Modal
 
 
-#myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#newEncounter.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} x
     %h3#myModalLabel New Encounter
@@ -100,7 +103,6 @@
     #half
 
       = render 'form'
-
 
     .large
 
@@ -126,7 +128,12 @@
 
 
 
+#notesModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} x
+    %h3#myModalLabel Add Notes
 
+  .modal-body
 
 
 

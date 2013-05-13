@@ -1,5 +1,4 @@
-// Place all the styles related to the encounters controller here.
-// They will automatically be included in application.css.
+
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tag_cloud {
 
@@ -56,7 +55,7 @@
 .notes_section{
     margin-top: 15px;
     border-top: 1px dashed #CCC;
-    padding-top: 10px;
+    padding-top: 15px;
     position: relative;
     width: 520px;
     clear: all;
@@ -68,6 +67,10 @@
   float: right;
   margin-left:10px;
   padding-top:5px;
+}
+
+.control-group {
+  margin-bottom: -5px;
 }
 
 #button-padding{

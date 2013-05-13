@@ -12,3 +12,8 @@ $(function() {
 });
 
 
+$(function() {
+    $('#notesModal').on('hidden', function () {
+  $(this).removeData('modal');
+});
+});
